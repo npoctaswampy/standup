@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="jumbotron bg-light">
+    <h1 class="display-4">Welcome to Standup!</h1>
+  </div>
+  <button *ngIf="!started" class="btn btn-primary" (click)="setStarted()">Get Started!</button>
+  <app-your-turn #yourTurn [started]="started" [hidden]="!started" [team]="team"></app-your-turn>
+  <div *ngIf="yourTurn.done()">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teamMember of yourTurn.getTeamOutput()">
+          <td>{{teamMember.name}}</td>
+          <td>{{teamMember.notes}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="yourTurn.done()" class="container">
+  <app-trivia></app-trivia>
+</div>

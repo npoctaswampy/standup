@@ -1,0 +1,11 @@
+<div *ngIf="!done()" class="container">
+<h2>It's your turn {{team[currentUserIndex]}}</h2>
+<app-countdown #countDown [started]="started"></app-countdown>
+<form class="mb-2">
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Notes:</label>
+        <textarea [(ngModel)]='notes' name="notesEntry" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+</form>
+<button class="btn btn-primary" (click)="countDown.resetCounter(); onNext()">Next</button>
+</div>

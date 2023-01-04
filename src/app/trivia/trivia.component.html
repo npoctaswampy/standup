@@ -1,0 +1,16 @@
+<div *ngIf="(triviaQuestion | async) as trivia" class="container my-3">
+    <div class="card">
+        <div class="card-header"><h3>Trivia!</h3></div>
+        <div class="card-body">
+            <h4>{{getRealQuotes(trivia.question)}}</h4>
+            <div *ngFor="let ans of trivia.mixed_answers" class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    <h5>{{ans}}</h5>
+                </label>
+            </div>
+        </div>
+        <h4 *ngIf="showAnswer">{{trivia.correct_answer}}</h4>
+        <button class="btn btn-primary" (click)="showAnswerToggle()">Show Answer</button>
+    </div>
+</div>
